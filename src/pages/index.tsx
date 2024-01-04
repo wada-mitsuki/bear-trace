@@ -3,7 +3,7 @@ import { NextPage } from 'next';
 const Home: NextPage = () => {
   return (
     <>
-      <div />
+      <div>とりあえずローカル確認はできました。</div>
     </>
   );
 };
