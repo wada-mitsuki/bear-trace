@@ -49,5 +49,8 @@
       "yarn format",
       "yarn lint:fix"
     ]
+  },
+  "resolutions": {
+    "strip-ansi": "6.0.1"
   }
 }
