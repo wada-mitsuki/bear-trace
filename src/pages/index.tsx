@@ -1,10 +1,14 @@
+import { Layout } from 'antd';
 import { NextPage } from 'next';
+
+import { Contents, SideBar } from '@/components/base/';
 
 const Home: NextPage = () => {
   return (
-    <>
-      <div>とりあえずローカル確認はできました。</div>
-    </>
+    <Layout className="bg-white" style={{ minHeight: '100vh' }}>
+      <SideBar />
+      <Contents />
+    </Layout>
   );
 };
 
