@@ -5,7 +5,7 @@ import { Contents, SideBar } from '@/components/base/';
 
 const Home: NextPage = () => {
   return (
-    <Layout className="bg-white" style={{ minHeight: '100vh' }}>
+    <Layout className="bg-white min-h-40">
       <SideBar />
       <Contents />
     </Layout>
