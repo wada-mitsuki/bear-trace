@@ -1,3 +1,15 @@
-import MainPage from '@/components/page/Main.page';
+import { Layout } from 'antd';
 
-export default MainPage;
+import { Contents } from '@/components/shared/contents';
+import { SideBar } from '@/components/shared/sidebar';
+
+const MainContents = () => {
+  return (
+    <Layout className="bg-white min-h-40">
+      <SideBar />
+      <Contents />
+    </Layout>
+  );
+};
+
+export default MainContents;
