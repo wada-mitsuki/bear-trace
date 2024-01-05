@@ -12,6 +12,7 @@ import React from 'react';
 export const Contents = () => {
   return (
     <Content>
+      {/* コンテンツヘッダー */}
       <Header className="top-0 right-0 bg-white border-b-2 fixed top-0 left-80 min-w-96">
         <Flex align="center" justify="space-between">
           <Flex gap="small">
@@ -27,6 +28,7 @@ export const Contents = () => {
         </Flex>
       </Header>
 
+      {/* コンテンツヘッダー */}
       <main className="mt-20 mx-14">
         <div>さあ始めましょう</div>
       </main>
