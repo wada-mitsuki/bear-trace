@@ -2,7 +2,7 @@ import { CloseCircleFilled, SearchOutlined } from '@ant-design/icons';
 import { Input, InputProps } from 'antd';
 import React from 'react';
 
-export type PropsType = {
+type PropsType = {
   onClick: (value: boolean) => void;
 } & InputProps;
 
