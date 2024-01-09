@@ -1,11 +1,15 @@
-import { NextPage } from 'next';
+import { Layout } from 'antd';
 
-const Home: NextPage = () => {
+import { Contents } from '@/components/shared/contents';
+import { SideBar } from '@/components/shared/sidebar';
+
+const MainContents = () => {
   return (
-    <>
-      <div>とりあえずローカル確認はできました。</div>
-    </>
+    <Layout className="bg-white min-h-40">
+      <SideBar />
+      <Contents />
+    </Layout>
   );
 };
 
-export default Home;
+export default MainContents;
