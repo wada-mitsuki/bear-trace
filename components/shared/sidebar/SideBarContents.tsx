@@ -1,10 +1,14 @@
 import { Flex } from 'antd';
-import React from 'react';
+import React, { FC } from 'react';
 
-export const SideBarContents = () => {
+export type SideBarContentsPropsType = {
+  memo: number;
+};
+
+export const SideBarContents: FC<SideBarContentsPropsType> = ({ memo }) => {
   return (
     <div className="mt-20">
-      {Array.from({ length: 24 }, (_, i) => (
+      {Array.from({ length: memo }, (_, i) => (
         <div className="m-2 border-b-2 text-gray-400" key={i}>
           <Flex vertical align="start" gap="start">
             <p className="font-bold text-inherit mb-1">素敵な新しいメモ</p>

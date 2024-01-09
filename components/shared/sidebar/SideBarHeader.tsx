@@ -8,7 +8,11 @@ import { Flex, Input } from 'antd';
 import { Header } from 'antd/lib/layout/layout';
 import React, { useState } from 'react';
 
-export const SideBarHeader = () => {
+export type SideBarHeaderType = {
+  handleClickAddMemo: (value: number) => void;
+};
+
+export const SideBarHeader = ({ handleClickAddMemo }: SideBarHeaderType) => {
   const [isSearch, setIsSearch] = useState(false);
   return (
     <Header className="border-b-2 px-5 w-80 fixed bg-white border-r-2">
@@ -31,7 +35,7 @@ export const SideBarHeader = () => {
             <DownOutlined className="text-xs" />
           </Flex>
           <Flex className="text-xl" gap="small">
-            <FormOutlined />
+            <FormOutlined onClick={() => handleClickAddMemo(1)} />
             <SearchOutlined onClick={() => setIsSearch(true)} />
           </Flex>
         </Flex>

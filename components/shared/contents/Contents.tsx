@@ -5,7 +5,7 @@ import { ContentsHeader } from '@/components/shared/contents';
 
 export const Contents = () => {
   return (
-    <Content>
+    <Content className="overflow-auto">
       <ContentsHeader />
 
       {/* コンテンツ*/}

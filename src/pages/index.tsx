@@ -5,7 +5,7 @@ import { SideBar } from '@/components/shared/sidebar';
 
 const MainContents = () => {
   return (
-    <Layout className="bg-white min-h-40">
+    <Layout className="bg-white">
       <SideBar />
       <Contents />
     </Layout>
