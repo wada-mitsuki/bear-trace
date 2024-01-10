@@ -1,5 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Clip } from 'src/entity/clip';
+import { createSlice } from '@reduxjs/toolkit';
 import {
   CLIP_FEATURE_KEY,
   clipAdapter,
@@ -11,8 +10,18 @@ export const clipSlice = createSlice({
   name: CLIP_FEATURE_KEY,
   reducers: {
     // 新規追加
-    addClip(state, action: PayloadAction<Clip>) {
-      clipAdapter.addOne(state.clips, action.payload);
+    addClip(state) {
+      const clips = clipAdapter.getSelectors().selectAll(state.clips);
+      const clipId = clips.length;
+      const createdDay = new Date().toLocaleDateString();
+
+      const newClip = {
+        createdAt: createdDay,
+        id: clipId,
+        text: '落ち着いて、何か書いてみましょう',
+        title: '素敵な新しいメモ',
+      };
+      clipAdapter.addOne(state.clips, newClip);
     },
   },
 });

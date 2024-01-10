@@ -10,17 +10,7 @@ export const useSideBar = () => {
 
   // クリップ追加処理
   const handleAddClip = useCallback(() => {
-    const clipId = clips.length + 1;
-    const createdDay = new Date().toLocaleDateString();
-
-    const newClip = {
-      createdAt: createdDay,
-      id: clipId,
-      text: '落ち着いて、何か書いてみましょう',
-      title: '素敵な新しいメモ',
-    };
-
-    dispatch(clipActions.addClip(newClip));
+    dispatch(clipActions.addClip());
   }, [clips]);
 
   return { clips, handleAddClip };
