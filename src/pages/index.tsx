@@ -1,11 +1,11 @@
 import { Layout } from 'antd';
-
-import { Contents } from '@/components/shared/contents';
-import { SideBar } from '@/components/shared/sidebar';
+import { Contents } from 'src/components/shared/contents';
+import { SideBar } from 'src/components/shared/sidebar';
 
 const MainContents = () => {
   return (
-    <Layout className="bg-white min-h-40">
+    // TODO:今は恩恵が特にないが、いずれcomponents/page配下へ。
+    <Layout className="bg-white">
       <SideBar />
       <Contents />
     </Layout>
