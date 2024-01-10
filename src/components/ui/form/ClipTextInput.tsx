@@ -8,7 +8,7 @@ export const ClipTextInput = ({ ...props }: PropsType) => {
     // classNameだとminHeightが効かないのでstyleで指定
     <TextArea
       bordered={false}
-      className="pl-0 min-h-80"
+      className="pl-0"
       style={{ minHeight: 700, resize: 'none' }}
       {...props}
     />
