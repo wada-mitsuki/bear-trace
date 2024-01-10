@@ -12,3 +12,10 @@ const clipFeatureSelector = (state: StoreState) => state[CLIP_FEATURE_KEY];
 export const clipsSelector = createSelector(clipFeatureSelector, (state) =>
   selectAll(state.clips),
 );
+/**
+ * 選択中
+ */
+export const selectedClipSelector = createSelector(
+  clipFeatureSelector,
+  (state) => state.selectedClip,
+);

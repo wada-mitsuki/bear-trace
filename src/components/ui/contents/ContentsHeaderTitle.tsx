@@ -5,5 +5,13 @@ type PropsType = {
 };
 
 export const ContentsHeaderTitle = ({ title }: PropsType) => {
-  return <p className="font-bold">{title}</p>;
+  return (
+    <>
+      {title ? (
+        <p className="font-bold">{title}</p>
+      ) : (
+        <p className="font-bold">ようこそ！</p>
+      )}
+    </>
+  );
 };

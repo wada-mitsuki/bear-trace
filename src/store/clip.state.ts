@@ -7,8 +7,15 @@ export const clipAdapter = createEntityAdapter<Clip>();
 
 export interface ClipsState {
   clips: EntityState<Clip, number>;
+  selectedClip: Clip;
 }
 
 export const initialClipsState: ClipsState = {
   clips: clipAdapter.getInitialState(),
+  selectedClip: {
+    createdAt: '',
+    id: 0,
+    text: '',
+    title: '',
+  },
 };

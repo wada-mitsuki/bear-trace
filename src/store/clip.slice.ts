@@ -1,4 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Clip } from 'src/entity/clip';
 import {
   CLIP_FEATURE_KEY,
   clipAdapter,
@@ -22,6 +23,14 @@ export const clipSlice = createSlice({
         title: '素敵な新しいメモ',
       };
       clipAdapter.addOne(state.clips, newClip);
+    },
+    // 編集
+    editClip(state, action: PayloadAction<Clip>) {
+      clipAdapter.upsertOne(state.clips, action.payload);
+    },
+    // 選択中クリップ
+    selectedClip(state, action: PayloadAction<Clip>) {
+      state.selectedClip = action.payload;
     },
   },
 });
