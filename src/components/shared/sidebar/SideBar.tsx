@@ -12,7 +12,7 @@ export const SideBar = () => {
       theme="light"
       width="320"
     >
-      <SideBarHeader handleClickAddMemo={handleAddClip} />
+      <SideBarHeader handleClickAddClip={handleAddClip} />
       <SideBarContents clips={clips} />
     </Sider>
   );

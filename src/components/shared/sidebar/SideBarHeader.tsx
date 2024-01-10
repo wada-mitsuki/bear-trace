@@ -9,10 +9,10 @@ import { SideBarHeaderActions } from '@/components/ui/sidebar/SideBarHeaderActio
 import { SideBarHeaderTitle } from '@/components/ui/sidebar/SideBarHeaderTitle';
 
 export type SideBarHeaderType = {
-  handleClickAddMemo: () => void;
+  handleClickAddClip: () => void;
 };
 
-export const SideBarHeader = ({ handleClickAddMemo }: SideBarHeaderType) => {
+export const SideBarHeader = ({ handleClickAddClip }: SideBarHeaderType) => {
   const { isSearch, setIsSearch } = useSideBarHeader();
 
   return (
@@ -24,7 +24,7 @@ export const SideBarHeader = ({ handleClickAddMemo }: SideBarHeaderType) => {
         <Flex align="center" justify="space-between">
           <SideBarHeaderTitle title="メモ" />
           <SideBarHeaderActions>
-            <FormOutlined onClick={handleClickAddMemo} />
+            <FormOutlined onClick={handleClickAddClip} />
             <SearchOutlined onClick={() => setIsSearch(true)} />
           </SideBarHeaderActions>
         </Flex>

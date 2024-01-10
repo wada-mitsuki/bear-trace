@@ -1,11 +1,9 @@
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { clipsSelector } from 'src/store/clip.selectors';
 import { clipActions } from 'src/store/clip.slice';
 
 export const useSideBar = () => {
-  const [clip, setClip] = useState(1);
-
   // store関連
   const clips = useSelector(clipsSelector);
   const dispatch = useDispatch();
