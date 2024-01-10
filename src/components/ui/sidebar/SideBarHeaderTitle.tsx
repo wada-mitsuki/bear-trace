@@ -6,7 +6,7 @@ type PropsType = {
   title: string;
 };
 
-export const HeaderTitle = ({ title }: PropsType) => {
+export const SideBarHeaderTitle = ({ title }: PropsType) => {
   return (
     <Flex gap="small">
       <p className="font-bold">{title}</p>

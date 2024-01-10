@@ -1,3 +1,3 @@
-export * from './HeaderTitle';
-export * from './HeaderOprArea';
+export * from './SideBarHeaderTitle';
+export * from './SideBarHeaderActions';
 export * from './ClipTitleText';

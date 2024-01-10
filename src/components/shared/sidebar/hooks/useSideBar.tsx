@@ -4,7 +4,7 @@ import { clipsSelector } from 'src/store/clip.selectors';
 import { clipActions } from 'src/store/clip.slice';
 
 export const useSideBar = () => {
-  const [isSearch, setIsSearch] = useState(false);
+  const [clip, setClip] = useState(1);
 
   // store関連
   const clips = useSelector(clipsSelector);
@@ -25,5 +25,5 @@ export const useSideBar = () => {
     dispatch(clipActions.addClip(newClip));
   }, [clips]);
 
-  return { clips, handleAddClip, isSearch, setIsSearch };
+  return { clips, handleAddClip };
 };

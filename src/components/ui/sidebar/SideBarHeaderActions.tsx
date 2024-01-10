@@ -5,7 +5,7 @@ type PropsType = {
   children?: ReactNode;
 };
 
-export const HeaderOprArea = ({ children }: PropsType) => {
+export const SideBarHeaderActions = ({ children }: PropsType) => {
   return (
     <Flex className="text-xl" gap="small">
       {children}
