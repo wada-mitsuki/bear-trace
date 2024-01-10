@@ -8,13 +8,13 @@ import { HeaderOprArea } from '@/components/ui/sidebar/HeaderOprArea';
 import { HeaderTitle } from '@/components/ui/sidebar/HeaderTitle';
 
 export type SideBarHeaderType = {
-  handleClickAddMemo: () => void;
+  handleClickAddClip: () => void;
   handleSetSearch: (value: boolean) => void;
   isSearch: boolean;
 };
 
 export const SideBarHeader = ({
-  handleClickAddMemo,
+  handleClickAddClip,
   handleSetSearch,
   isSearch,
 }: SideBarHeaderType) => {
@@ -27,7 +27,7 @@ export const SideBarHeader = ({
         <Flex align="center" justify="space-between">
           <HeaderTitle title="メモ" />
           <HeaderOprArea>
-            <FormOutlined onClick={handleClickAddMemo} />
+            <FormOutlined onClick={handleClickAddClip} />
             <SearchOutlined onClick={() => handleSetSearch(true)} />
           </HeaderOprArea>
         </Flex>
