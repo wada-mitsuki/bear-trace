@@ -5,8 +5,8 @@ import React from 'react';
 import { useSideBarHeader } from 'src/components/shared/sidebar/hooks';
 
 import { SearchInput } from '@/components/ui/form/SearchInput';
-import { HeaderOprArea } from '@/components/ui/sidebar/HeaderOprArea';
-import { HeaderTitle } from '@/components/ui/sidebar/HeaderTitle';
+import { SideBarHeaderActions } from '@/components/ui/sidebar/SideBarHeaderActions';
+import { SideBarHeaderTitle } from '@/components/ui/sidebar/SideBarHeaderTitle';
 
 export type SideBarHeaderType = {
   handleClickAddMemo: () => void;
@@ -22,11 +22,11 @@ export const SideBarHeader = ({ handleClickAddMemo }: SideBarHeaderType) => {
         <SearchInput onClick={() => setIsSearch(false)} />
       ) : (
         <Flex align="center" justify="space-between">
-          <HeaderTitle title="メモ" />
-          <HeaderOprArea>
+          <SideBarHeaderTitle title="メモ" />
+          <SideBarHeaderActions>
             <FormOutlined onClick={handleClickAddMemo} />
             <SearchOutlined onClick={() => setIsSearch(true)} />
-          </HeaderOprArea>
+          </SideBarHeaderActions>
         </Flex>
       )}
     </Header>
