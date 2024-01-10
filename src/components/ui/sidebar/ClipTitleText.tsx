@@ -5,5 +5,7 @@ type PropsType = {
 };
 
 export const ClipTitleText = ({ children }: PropsType) => {
-  return <p className="font-bold text-inherit mb-1">{children}</p>;
+  return (
+    <p className="font-bold text-inherit mb-1 w-full truncate">{children}</p>
+  );
 };

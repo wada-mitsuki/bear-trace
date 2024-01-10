@@ -14,7 +14,6 @@ export const useContentBody = ({ clip }: ContentBodyHooksType) => {
   // store関連
   const dispatch = useDispatch();
 
-  // ここuseEffect使わなくてもいい方法ってありますっけ？
   useEffect(() => {
     setTitleText(clip.title);
     setText(clip.text);

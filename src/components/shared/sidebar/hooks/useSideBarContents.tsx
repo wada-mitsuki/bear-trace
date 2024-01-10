@@ -6,7 +6,7 @@ export const useSideBarContents = () => {
   // store関連
   const dispatch = useDispatch();
 
-  // クリップ追加処理
+  // クリップ選択処理
   const onSelectClip = (clip: Clip) => {
     console.log(clip);
     dispatch(clipActions.selectedClip(clip));

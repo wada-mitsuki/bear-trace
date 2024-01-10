@@ -5,11 +5,11 @@ type PropsType = TextAreaProps;
 
 export const ClipTextInput = ({ ...props }: PropsType) => {
   return (
-    // TODO：TextAreaの高さを画面いっぱいに
+    // classNameだとminHeightが効かないのでstyleで指定
     <TextArea
-      autoSize={true}
       bordered={false}
-      className="pl-0 min-h-screen"
+      className="pl-0 min-h-80"
+      style={{ minHeight: 700, resize: 'none' }}
       {...props}
     />
   );
