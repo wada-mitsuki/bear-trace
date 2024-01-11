@@ -8,8 +8,12 @@ export const Contents = () => {
   const { selectedClip } = useContents();
   return (
     <Content className="overflow-auto">
-      <ContentsHeader title={selectedClip.title} />
-      <ContentBody clip={selectedClip} />
+      {selectedClip && (
+        <>
+          <ContentsHeader title={selectedClip.title} />
+          <ContentBody clip={selectedClip} />
+        </>
+      )}
     </Content>
   );
 };

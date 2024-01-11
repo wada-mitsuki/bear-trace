@@ -13,7 +13,7 @@ export const clipSlice = createSlice({
     // 新規追加
     addClip(state) {
       const clips = clipAdapter.getSelectors().selectAll(state.clips);
-      const clipId = clips.length;
+      const clipId = clips.length + 1;
       const createdDay = new Date().toLocaleDateString();
 
       const newClip = {
@@ -29,8 +29,8 @@ export const clipSlice = createSlice({
       clipAdapter.upsertOne(state.clips, action.payload);
     },
     // 選択中クリップ
-    selectedClip(state, action: PayloadAction<Clip>) {
-      state.selectedClip = action.payload;
+    selectedClipId(state, action: PayloadAction<number>) {
+      state.selectedClipId = action.payload;
     },
   },
 });

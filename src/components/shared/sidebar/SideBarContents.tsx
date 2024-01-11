@@ -16,7 +16,7 @@ export const SideBarContents: FC<SideBarContentsPropsType> = ({ clips }) => {
       {clips.map((clip) => {
         return (
           <>
-            <ClipLayout key={clip.id} onClick={() => onSelectClip(clip)}>
+            <ClipLayout key={clip.id} onClick={() => onSelectClip(clip.id)}>
               <ClipTitleText>{clip.title}</ClipTitleText>
 
               {/* TODO:どうやってUI化するか悩み中 */}
