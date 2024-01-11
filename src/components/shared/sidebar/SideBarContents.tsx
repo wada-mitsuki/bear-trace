@@ -1,16 +1,18 @@
 import React, { FC } from 'react';
 import { Clip } from 'src/entity/clip';
 
-import { useSideBarContents } from '@/components/shared/sidebar/hooks';
 import { ClipLayout } from '@/components/ui/layout/ClipLayout';
 import { ClipTitleText } from '@/components/ui/sidebar';
 
 export type SideBarContentsPropsType = {
   clips: Clip[];
+  onSelectClip: (clipId: number) => void;
 };
 
-export const SideBarContents: FC<SideBarContentsPropsType> = ({ clips }) => {
-  const { onSelectClip } = useSideBarContents();
+export const SideBarContents: FC<SideBarContentsPropsType> = ({
+  clips,
+  onSelectClip,
+}) => {
   return (
     <div className="mt-20">
       {clips.map((clip) => {

@@ -1,18 +1,15 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Clip } from 'src/entity/clip';
-import { clipActions } from 'src/store/clip.slice';
 
-type ContentBodyHooksType = {
-  clip: Clip;
-};
+import { ContentBodyPropsType } from '@/components/shared/contents';
 
-export const useContentBody = ({ clip }: ContentBodyHooksType) => {
+type ContentBodyHooksType = ContentBodyPropsType;
+
+export const useContentBody = ({
+  clip,
+  handleSaveText,
+}: ContentBodyHooksType) => {
   const [titleText, setTitleText] = useState('');
   const [text, setText] = useState('');
-
-  // store関連
-  const dispatch = useDispatch();
 
   useEffect(() => {
     setTitleText(clip.title);
@@ -28,7 +25,7 @@ export const useContentBody = ({ clip }: ContentBodyHooksType) => {
       title: titleText,
       updateAt: updateDay,
     };
-    dispatch(clipActions.editClip(editClip));
+    handleSaveText(editClip);
   };
 
   return { onSaveText, setText, setTitleText, text, titleText };
