@@ -5,6 +5,7 @@ import {
   clipAdapter,
   initialClipsState,
 } from 'src/store/clip.state';
+import { nowDate } from 'src/utils/day';
 
 export const clipSlice = createSlice({
   initialState: initialClipsState,
@@ -14,7 +15,7 @@ export const clipSlice = createSlice({
     addClip(state) {
       const clips = clipAdapter.getSelectors().selectAll(state.clips);
       const clipId = clips.length + 1;
-      const createdDay = new Date().toLocaleDateString();
+      const createdDay = nowDate();
 
       const newClip = {
         createdAt: createdDay,

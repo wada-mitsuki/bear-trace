@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { nowDate } from 'src/utils/day';
 import { useDebouncedCallback } from 'use-debounce';
 
 import { ContentBodyPropsType } from '@/components/shared/contents';
@@ -32,7 +33,7 @@ export const useContentBody = ({
   }, 1000);
 
   const onSaveText = () => {
-    const updateDay = new Date().toLocaleDateString();
+    const updateDay = nowDate();
 
     const editClip = {
       ...clip,

@@ -23,7 +23,9 @@ export const SideBarContents: FC<SideBarContentsPropsType> = ({
 
               {/* TODO:どうやってUI化するか悩み中 */}
               <p className="truncate w-full">{clip.text}</p>
-              <p className="text-xs mt-5 mb-3">{clip.createdAt}</p>
+              <p className="text-xs mt-5 mb-3">
+                {clip.updateAt ?? clip.createdAt}
+              </p>
             </ClipLayout>
           </>
         );
