@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useDebouncedCallback } from 'use-debounce';
 
 import { ContentBodyPropsType } from '@/components/shared/contents';
 
@@ -16,6 +17,20 @@ export const useContentBody = ({
     setText(clip.text);
   }, [clip]);
 
+  // TODO:markdownでtitleTextとtextがもしかしたら一つになるかも
+  const onChangeTitleText = (text: string) => {
+    setTitleText(text);
+    debounceSaveText();
+  };
+  const onChangeText = (text: string) => {
+    setText(text);
+    debounceSaveText();
+  };
+
+  const debounceSaveText = useDebouncedCallback(() => {
+    onSaveText();
+  }, 1000);
+
   const onSaveText = () => {
     const updateDay = new Date().toLocaleDateString();
 
@@ -28,5 +43,11 @@ export const useContentBody = ({
     handleSaveText(editClip);
   };
 
-  return { onSaveText, setText, setTitleText, text, titleText };
+  return {
+    onChangeText,
+    onChangeTitleText,
+    onSaveText,
+    text,
+    titleText,
+  };
 };

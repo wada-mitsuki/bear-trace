@@ -14,17 +14,19 @@ export const ContentBody: FC<ContentBodyPropsType> = ({
   clip,
   handleSaveText,
 }) => {
-  const { onSaveText, setText, setTitleText, text, titleText } = useContentBody(
-    { clip, handleSaveText },
-  );
+  const { onChangeText, onChangeTitleText, onSaveText, text, titleText } =
+    useContentBody({ clip, handleSaveText });
   return (
     <main className="mt-20 mx-12" onBlur={onSaveText}>
       <Flex vertical gap={32}>
         <ClipTitleInput
           value={titleText}
-          onChange={(e) => setTitleText(e.target.value)}
+          onChange={(e) => onChangeTitleText(e.target.value)}
         />
-        <ClipTextInput value={text} onChange={(e) => setText(e.target.value)} />
+        <ClipTextInput
+          value={text}
+          onChange={(e) => onChangeText(e.target.value)}
+        />
       </Flex>
     </main>
   );
