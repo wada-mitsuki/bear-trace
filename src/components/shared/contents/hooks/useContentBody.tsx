@@ -33,13 +33,13 @@ export const useContentBody = ({
   }, 1000);
 
   const onSaveText = () => {
-    const updateDay = nowDate();
+    const updateAt = nowDate();
 
     const editClip = {
       ...clip,
       text: text,
       title: titleText,
-      updateAt: updateDay,
+      updateAt: updateAt,
     };
     handleSaveText(editClip);
   };

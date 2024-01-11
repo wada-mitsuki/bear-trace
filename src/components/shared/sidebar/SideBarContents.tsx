@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { Clip } from 'src/entity/clip';
+import { displayDateFormat } from 'src/utils/day';
 
 import { ClipLayout } from '@/components/ui/layout/ClipLayout';
 import { ClipTitleText } from '@/components/ui/sidebar';
@@ -24,7 +25,9 @@ export const SideBarContents: FC<SideBarContentsPropsType> = ({
               {/* TODO:どうやってUI化するか悩み中 */}
               <p className="truncate w-full">{clip.text}</p>
               <p className="text-xs mt-5 mb-3">
-                {clip.updateAt ?? clip.createdAt}
+                {clip.updateAt
+                  ? displayDateFormat(clip.updateAt)
+                  : displayDateFormat(clip.createdAt)}
               </p>
             </ClipLayout>
           </>

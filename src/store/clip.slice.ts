@@ -15,10 +15,10 @@ export const clipSlice = createSlice({
     addClip(state) {
       const clips = clipAdapter.getSelectors().selectAll(state.clips);
       const clipId = clips.length + 1;
-      const createdDay = nowDate();
+      const createdAt = nowDate();
 
       const newClip = {
-        createdAt: createdDay,
+        createdAt: createdAt,
         id: clipId,
         text: '落ち着いて、何か書いてみましょう',
         title: '素敵な新しいメモ',
