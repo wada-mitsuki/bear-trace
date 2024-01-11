@@ -4,7 +4,7 @@ import { SideBarContents, SideBarHeader } from 'src/components/shared/sidebar';
 import { useSideBar } from 'src/components/shared/sidebar/hooks';
 
 export const SideBar = () => {
-  const { clip, handleAddMemo } = useSideBar();
+  const { clips, handleAddClip } = useSideBar();
   return (
     // TODO:ここのSiderもui化したいがなぜかレイアウトが崩れる
     <Sider
@@ -12,8 +12,8 @@ export const SideBar = () => {
       theme="light"
       width="320"
     >
-      <SideBarHeader handleClickAddMemo={handleAddMemo} />
-      <SideBarContents clip={clip} />
+      <SideBarHeader handleClickAddClip={handleAddClip} />
+      <SideBarContents clips={clips} />
     </Sider>
   );
 };
