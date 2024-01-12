@@ -1,19 +1,18 @@
 import { FormOutlined, SearchOutlined } from '@ant-design/icons';
 import { Flex } from 'antd';
 import { Header } from 'antd/lib/layout/layout';
-import React from 'react';
-import { useSideBarHeader } from 'src/components/shared/sidebar/hooks';
+import React, { FC, useState } from 'react';
 
 import { SearchInput } from '@/components/ui/form/SearchInput';
 import { SideBarHeaderActions } from '@/components/ui/sidebar/SideBarHeaderActions';
 import { SideBarHeaderTitle } from '@/components/ui/sidebar/SideBarHeaderTitle';
 
 export type SideBarHeaderType = {
-  handleClickAddClip: () => void;
+  onClickAddClip: () => void;
 };
 
-export const SideBarHeader = ({ handleClickAddClip }: SideBarHeaderType) => {
-  const { isSearch, setIsSearch } = useSideBarHeader();
+export const SideBarHeader: FC<SideBarHeaderType> = ({ onClickAddClip }) => {
+  const [isSearch, setIsSearch] = useState(false);
 
   return (
     // Headerをui化したらエラーになる
@@ -24,7 +23,7 @@ export const SideBarHeader = ({ handleClickAddClip }: SideBarHeaderType) => {
         <Flex align="center" justify="space-between">
           <SideBarHeaderTitle title="メモ" />
           <SideBarHeaderActions>
-            <FormOutlined onClick={handleClickAddClip} />
+            <FormOutlined onClick={onClickAddClip} />
             <SearchOutlined onClick={() => setIsSearch(true)} />
           </SideBarHeaderActions>
         </Flex>

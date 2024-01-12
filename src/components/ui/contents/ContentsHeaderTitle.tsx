@@ -1,7 +1,7 @@
 import React from 'react';
 
 type PropsType = {
-  title: string;
+  title?: string;
 };
 
 export const ContentsHeaderTitle = ({ title }: PropsType) => {

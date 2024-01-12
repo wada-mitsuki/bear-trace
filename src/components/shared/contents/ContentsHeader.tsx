@@ -7,17 +7,21 @@ import {
 } from '@ant-design/icons';
 import { Flex } from 'antd';
 import { Header } from 'antd/lib/layout/layout';
-import React from 'react';
+import React, { FC } from 'react';
 
 import { ContentsHeaderActions } from '@/components/ui/contents/ContentsHeaderActions';
 import { ContentsHeaderTitle } from '@/components/ui/contents/ContentsHeaderTitle';
 
-export const ContentsHeader = () => {
+type PropsType = {
+  title: string;
+};
+
+export const ContentsHeader: FC<PropsType> = ({ title }) => {
   return (
     // Headerをui化したらエラーになる
-    <Header className="top-0 right-0 bg-white border-b-2 fixed left-80 min-w-96">
+    <Header className="top-0 right-0 border-b-2 fixed bg-white left-80 min-w-96 z-50 items-center">
       <Flex align="center" justify="space-between">
-        <ContentsHeaderTitle title="デモアプリへようこそ" />
+        <ContentsHeaderTitle title={title} />
         <ContentsHeaderActions>
           <Flex>
             <BoldOutlined />

@@ -1,9 +1,11 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Clip } from 'src/entity/clip';
 import {
   CLIP_FEATURE_KEY,
   clipAdapter,
   initialClipsState,
 } from 'src/store/clip.state';
+import { nowDate } from 'src/utils/day';
 
 export const clipSlice = createSlice({
   initialState: initialClipsState,
@@ -12,16 +14,24 @@ export const clipSlice = createSlice({
     // 新規追加
     addClip(state) {
       const clips = clipAdapter.getSelectors().selectAll(state.clips);
-      const clipId = clips.length;
-      const createdDay = new Date().toLocaleDateString();
+      const clipId = clips.length + 1;
+      const createdAt = nowDate();
 
       const newClip = {
-        createdAt: createdDay,
+        createdAt: createdAt,
         id: clipId,
         text: '落ち着いて、何か書いてみましょう',
         title: '素敵な新しいメモ',
       };
       clipAdapter.addOne(state.clips, newClip);
+    },
+    // 編集
+    editClip(state, action: PayloadAction<Clip>) {
+      clipAdapter.upsertOne(state.clips, action.payload);
+    },
+    // 選択中クリップ
+    selectedClipId(state, action: PayloadAction<number>) {
+      state.selectedClipId = action.payload;
     },
   },
 });
