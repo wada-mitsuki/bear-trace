@@ -1,18 +1,19 @@
 import Sider from 'antd/lib/layout/Sider';
 import React, { FC } from 'react';
 import { SideBarContents, SideBarHeader } from 'src/components/shared/sidebar';
-import { useSideBar } from 'src/components/shared/sidebar/hooks';
+import { Clip } from 'src/entity/clip';
 
 export type SideBarType = {
+  clips: Clip[];
   handleAddClip: () => void;
   handleSelectClip: (clipId: number) => void;
 };
 
 export const SideBar: FC<SideBarType> = ({
+  clips,
   handleAddClip,
   handleSelectClip,
 }) => {
-  const { clips } = useSideBar();
   return (
     // TODO:ここのSiderもui化したいがなぜかレイアウトが崩れる
     <Sider

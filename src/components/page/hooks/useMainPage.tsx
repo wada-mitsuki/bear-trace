@@ -1,10 +1,14 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Clip } from 'src/entity/clip';
+import { clipsSelector, selectedClipSelector } from 'src/store/clip.selectors';
 import { clipActions } from 'src/store/clip.slice';
 
 export const useMainPage = () => {
   // store関連
   const dispatch = useDispatch();
+
+  const selectedClip = useSelector(selectedClipSelector);
+  const clips = useSelector(clipsSelector);
 
   // 新規クリップ追加
   const handleAddClip = () => {
@@ -21,5 +25,11 @@ export const useMainPage = () => {
     dispatch(clipActions.editClip(editClip));
   };
 
-  return { handleAddClip, handleSaveText, handleSelectClip };
+  return {
+    clips,
+    handleAddClip,
+    handleSaveText,
+    handleSelectClip,
+    selectedClip,
+  };
 };

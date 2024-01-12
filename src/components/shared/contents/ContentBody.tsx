@@ -1,21 +1,18 @@
 import { Flex } from 'antd';
 import React, { FC } from 'react';
-import { Clip } from 'src/entity/clip';
 
 import { ContentsPropsType } from '@/components/shared/contents';
 import { useContentBody } from '@/components/shared/contents/hooks';
 import { ClipTextInput, ClipTitleInput } from '@/components/ui/form/';
 
-export type ContentBodyPropsType = {
-  clip: Clip;
-} & ContentsPropsType;
+export type ContentBodyPropsType = ContentsPropsType;
 
 export const ContentBody: FC<ContentBodyPropsType> = ({
-  clip,
   handleSaveText,
+  selectedClip,
 }) => {
   const { onChangeText, onChangeTitleText, onSaveText, text, titleText } =
-    useContentBody({ clip, handleSaveText });
+    useContentBody({ handleSaveText, selectedClip });
   return (
     <main className="mt-20 mx-12" onBlur={onSaveText}>
       <Flex vertical gap={32}>

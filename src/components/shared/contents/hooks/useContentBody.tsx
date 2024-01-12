@@ -7,8 +7,8 @@ import { ContentBodyPropsType } from '@/components/shared/contents';
 type ContentBodyHooksType = ContentBodyPropsType;
 
 export const useContentBody = ({
-  clip,
   handleSaveText,
+  selectedClip: clip,
 }: ContentBodyHooksType) => {
   const [titleText, setTitleText] = useState('');
   const [text, setText] = useState('');

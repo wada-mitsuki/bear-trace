@@ -5,14 +5,24 @@ import { SideBar } from 'src/components/shared/sidebar';
 import { useMainPage } from '@/components/page/hooks';
 
 const MainPage = () => {
-  const { handleAddClip, handleSaveText, handleSelectClip } = useMainPage();
+  const {
+    clips,
+    handleAddClip,
+    handleSaveText,
+    handleSelectClip,
+    selectedClip,
+  } = useMainPage();
+
   return (
     <Layout className="bg-white">
       <SideBar
+        clips={clips}
         handleAddClip={handleAddClip}
         handleSelectClip={handleSelectClip}
       />
-      <Contents handleSaveText={handleSaveText} />
+      {selectedClip && (
+        <Contents handleSaveText={handleSaveText} selectedClip={selectedClip} />
+      )}
     </Layout>
   );
 };
