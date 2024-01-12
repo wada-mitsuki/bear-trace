@@ -13,17 +13,26 @@ import { ContentsHeaderActions } from '@/components/ui/contents/ContentsHeaderAc
 import { ContentsHeaderTitle } from '@/components/ui/contents/ContentsHeaderTitle';
 
 type PropsType = {
+  isEditOption: boolean;
+  setIsEditOption: (boolean: boolean) => void;
   title: string;
 };
 
-export const ContentsHeader: FC<PropsType> = ({ title }) => {
+export const ContentsHeader: FC<PropsType> = ({
+  isEditOption,
+  setIsEditOption,
+  title,
+}) => {
   return (
     // Headerをui化したらエラーになる
     <Header className="top-0 right-0 border-b-2 fixed bg-white left-80 min-w-96 z-50 items-center">
       <Flex align="center" justify="space-between">
         <ContentsHeaderTitle title={title} />
         <ContentsHeaderActions>
-          <Flex>
+          <Flex
+            className="cursor-pointer"
+            onClick={() => setIsEditOption(!isEditOption)}
+          >
             <BoldOutlined />
             <ItalicOutlined />
             <UnderlineOutlined />

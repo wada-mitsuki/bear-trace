@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { nowDate } from 'src/utils/day';
 import { useDebouncedCallback } from 'use-debounce';
 
-import { ContentBodyPropsType } from '@/components/shared/contents';
+import { ContentsPropsType } from '@/components/shared/contents';
 
-type ContentBodyHooksType = ContentBodyPropsType;
+type ContentBodyHooksType = ContentsPropsType;
 
 export const useContentBody = ({
   handleSaveText,
@@ -23,8 +23,9 @@ export const useContentBody = ({
     setTitleText(text);
     debounceSaveText();
   };
-  const onChangeText = (text: string) => {
-    setText(text);
+  const onChangeText = (text?: string) => {
+    // マークダウンエディタのライブラリがundifineを許容してるのでこの書き方
+    setText(text ?? '');
     debounceSaveText();
   };
 

@@ -5,6 +5,10 @@ type PropsType = InputProps;
 
 export const ClipTitleInput = ({ ...props }: PropsType) => {
   return (
-    <Input bordered={false} className="text-4xl font-bold pl-0" {...props} />
+    <Input
+      className="text-4xl font-bold px-1 py-3"
+      placeholder="タイトルを入力"
+      {...props}
+    />
   );
 };
