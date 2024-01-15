@@ -26,9 +26,24 @@ export const ContentsHeader: FC<PropsType> = ({
   return (
     // Headerをui化したらエラーになる
     <Header className="top-0 right-0 border-b-2 fixed bg-white left-80 min-w-96 z-50 items-center">
-      <Flex align="center" justify="space-between">
-        <ContentsHeaderTitle title={title} />
-        <ContentsHeaderActions>
+      {title ? (
+        <Flex align="center" justify="space-between">
+          <ContentsHeaderTitle title={title} />
+          <ContentsHeaderActions>
+            <Flex
+              className="cursor-pointer"
+              onClick={() => setIsEditOption(!isEditOption)}
+            >
+              <BoldOutlined />
+              <ItalicOutlined />
+              <UnderlineOutlined />
+            </Flex>
+            <ExclamationCircleOutlined />
+            <MoreOutlined />
+          </ContentsHeaderActions>
+        </Flex>
+      ) : (
+        <ContentsHeaderActions justify="flex-end" minHeight="h-16">
           <Flex
             className="cursor-pointer"
             onClick={() => setIsEditOption(!isEditOption)}
@@ -40,7 +55,7 @@ export const ContentsHeader: FC<PropsType> = ({
           <ExclamationCircleOutlined />
           <MoreOutlined />
         </ContentsHeaderActions>
-      </Flex>
+      )}
     </Header>
   );
 };
