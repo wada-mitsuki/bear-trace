@@ -5,18 +5,18 @@ import dynamic from 'next/dynamic';
 import React, { FC, useEffect, useState } from 'react';
 
 type PropsType = {
+  editedText: string;
   isEditOption: boolean;
   onChange: (text?: string) => void;
-  text: string;
 };
 
 // ここで宣言しないと文字が入力できなくなる
 const MDEditor = dynamic(() => import('@uiw/react-md-editor'), { ssr: false });
 
 export const MarkDownEditor: FC<PropsType> = ({
+  editedText,
   isEditOption,
   onChange,
-  text,
   ...props
 }) => {
   /*
@@ -27,7 +27,7 @@ export const MarkDownEditor: FC<PropsType> = ({
 
   useEffect(() => {
     // ビューポートの高さの80%
-    const heightInPixels = window.innerHeight * 0.8;
+    const heightInPixels = window.innerHeight * 0.85;
     setEditorHeight(heightInPixels);
   }, []);
 
@@ -38,7 +38,10 @@ export const MarkDownEditor: FC<PropsType> = ({
         height={editorHeight}
         hideToolbar={isEditOption}
         preview="edit"
-        value={text}
+        textareaProps={{
+          placeholder: '落ち着いて、何か書いてみましょう',
+        }}
+        value={editedText}
         visiableDragbar={false}
         onChange={onChange}
         {...props}

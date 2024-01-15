@@ -20,8 +20,8 @@ export const clipSlice = createSlice({
       const newClip = {
         createdAt: createdAt,
         id: clipId,
-        text: '落ち着いて、何か書いてみましょう',
-        title: '素敵な新しいメモ',
+        text: '',
+        title: '',
       };
       clipAdapter.addOne(state.clips, newClip);
     },

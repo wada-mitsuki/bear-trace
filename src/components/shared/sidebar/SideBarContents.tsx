@@ -27,10 +27,16 @@ export const SideBarContents: FC<SideBarContentsPropsType> = ({
               key={clip.id}
               onClick={() => onSelectClip(clip.id)}
             >
-              <ClipTitleText>{clip.title}</ClipTitleText>
+              <ClipTitleText>
+                {clip.title ? removeMd(clip.title) : 'ステキな新しいメモ'}
+              </ClipTitleText>
 
               {/* TODO:どうやってUI化するか悩み中 */}
-              <p className="line-clamp-2 w-full">{removeMd(clip.text)}</p>
+              <p className="line-clamp-2 w-full">
+                {clip.title
+                  ? removeMd(clip.text)
+                  : '落ち着いて、何か書いてみましょう'}
+              </p>
 
               <p className="text-xs mt-5 mb-3">
                 {clip.updateAt

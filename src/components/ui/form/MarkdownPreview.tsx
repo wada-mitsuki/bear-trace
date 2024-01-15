@@ -6,8 +6,7 @@ import React, { FC } from 'react';
 import remarkBreaks from 'remark-breaks';
 
 type PropsType = {
-  text: string;
-  title: string;
+  editedText: string;
 };
 
 const HTMLPreview = dynamic(
@@ -15,23 +14,21 @@ const HTMLPreview = dynamic(
   { ssr: false },
 );
 
-export const MarkdownPreview: FC<PropsType> = ({ text, title, ...props }) => {
+export const MarkdownPreview: FC<PropsType> = ({ editedText, ...props }) => {
   return (
-    <div className="w-full">
-      <div className="mt-3">
-        <HTMLPreview source={'# ' + title} />
-      </div>
-      <div className="mt-5">
-        <HTMLPreview
-          components={{
-            p: ({ children }) => (
-              <p style={{ marginBottom: '1em' }}>{children}</p>
-            ),
-          }}
-          remarkPlugins={[remarkBreaks]}
-          source={text}
-        />
-      </div>
+    <div className="w-full mt-5" data-color-mode="light">
+      <HTMLPreview
+        components={{
+          p: ({ children }) => (
+            <p style={{ marginBottom: '1em' }}>{children}</p>
+          ),
+        }}
+        remarkPlugins={[remarkBreaks]}
+        source={'# ' + editedText}
+        wrapperElement={{
+          'data-color-mode': 'light',
+        }}
+      />
     </div>
   );
 };
