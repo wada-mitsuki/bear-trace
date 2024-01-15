@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import removeMd from 'remove-markdown';
 import { Clip } from 'src/entity/clip';
 import { displayDateFormat } from 'src/utils/day';
 
@@ -29,7 +30,8 @@ export const SideBarContents: FC<SideBarContentsPropsType> = ({
               <ClipTitleText>{clip.title}</ClipTitleText>
 
               {/* TODO:どうやってUI化するか悩み中 */}
-              <p className="truncate w-full">{clip.text}</p>
+              <p className="line-clamp-2 w-full">{removeMd(clip.text)}</p>
+
               <p className="text-xs mt-5 mb-3">
                 {clip.updateAt
                   ? displayDateFormat(clip.updateAt)
