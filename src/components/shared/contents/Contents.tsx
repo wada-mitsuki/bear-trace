@@ -12,7 +12,7 @@ export const Contents: FC<ContentsPropsType> = ({
   handleSaveText,
   selectedClip,
 }) => {
-  const [isEditOption, setIsEditOption] = useState(false);
+  const [isEditOption, setIsEditOption] = useState(true);
 
   return (
     <Content className="overflow-auto">
