@@ -19,6 +19,7 @@ const MainPage = () => {
         clips={clips}
         handleAddClip={handleAddClip}
         handleSelectClip={handleSelectClip}
+        selectedClipId={selectedClip?.id}
       />
       {selectedClip && (
         <Contents handleSaveText={handleSaveText} selectedClip={selectedClip} />

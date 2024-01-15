@@ -8,18 +8,24 @@ import { ClipTitleText } from '@/components/ui/sidebar';
 export type SideBarContentsPropsType = {
   clips: Clip[];
   onSelectClip: (clipId: number) => void;
+  selectedClipId?: number;
 };
 
 export const SideBarContents: FC<SideBarContentsPropsType> = ({
   clips,
   onSelectClip,
+  selectedClipId,
 }) => {
   return (
     <div className="mt-20">
       {clips.map((clip) => {
         return (
           <>
-            <ClipLayout key={clip.id} onClick={() => onSelectClip(clip.id)}>
+            <ClipLayout
+              isSelect={selectedClipId == clip.id}
+              key={clip.id}
+              onClick={() => onSelectClip(clip.id)}
+            >
               <ClipTitleText>{clip.title}</ClipTitleText>
 
               {/* TODO:どうやってUI化するか悩み中 */}

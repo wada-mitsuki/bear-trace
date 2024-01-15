@@ -7,12 +7,14 @@ export type SideBarType = {
   clips: Clip[];
   handleAddClip: () => void;
   handleSelectClip: (clipId: number) => void;
+  selectedClipId?: number;
 };
 
 export const SideBar: FC<SideBarType> = ({
   clips,
   handleAddClip,
   handleSelectClip,
+  selectedClipId,
 }) => {
   return (
     // TODO:ここのSiderもui化したいがなぜかレイアウトが崩れる
@@ -22,7 +24,11 @@ export const SideBar: FC<SideBarType> = ({
       width="320"
     >
       <SideBarHeader onClickAddClip={handleAddClip} />
-      <SideBarContents clips={clips} onSelectClip={handleSelectClip} />
+      <SideBarContents
+        clips={clips}
+        selectedClipId={selectedClipId}
+        onSelectClip={handleSelectClip}
+      />
     </Sider>
   );
 };
