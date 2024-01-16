@@ -19,12 +19,18 @@ export const ContentBody: FC<ContentBodyPropsType> = ({
 }) => {
   const { editedText, onChangeEditText, onSaveText } = useContentBody({
     handleSaveText,
-
     selectedClip,
   });
 
   return (
-    <main className="mt-20 mx-12" onBlur={onSaveText}>
+    <main
+      className="mt-20 mx-12"
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget)) {
+          onSaveText();
+        }
+      }}
+    >
       <Flex gap="5rem">
         <div className="pt-5 w-full">
           <MarkDownEditor

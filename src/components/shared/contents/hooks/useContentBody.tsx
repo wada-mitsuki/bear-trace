@@ -20,6 +20,9 @@ export const useContentBody = ({
     setEditedText(text ?? '');
     debounceSaveText();
   };
+  const onBlurEditText = () => {
+    onSaveText();
+  };
 
   const debounceSaveText = useDebouncedCallback(() => {
     onSaveText();
@@ -54,6 +57,7 @@ export const useContentBody = ({
 
   return {
     editedText,
+    onBlurEditText,
     onChangeEditText,
     onSaveText,
   };
