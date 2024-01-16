@@ -24,7 +24,7 @@ export const MarkdownPreview: FC<PropsType> = ({ editedText, ...props }) => {
           ),
         }}
         remarkPlugins={[remarkBreaks]}
-        source={'# ' + editedText}
+        source={editedText}
         wrapperElement={{
           'data-color-mode': 'light',
         }}
