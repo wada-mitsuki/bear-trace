@@ -1,1 +1,1 @@
-export * from './useContentBody';
+export * from './useSideBarHeader';
