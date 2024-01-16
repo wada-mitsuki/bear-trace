@@ -25,14 +25,11 @@ export const SideBar: FC<SideBarType> = ({
       theme="light"
       width="320"
     >
-      <SideBarHeader
-        handleDeleteClip={handleDeleteClip}
-        selectedClipId={selectedClipId}
-        onClickAddClip={handleAddClip}
-      />
+      <SideBarHeader onClickAddClip={handleAddClip} />
 
       <SideBarContents
         clips={clips}
+        handleDeleteClip={handleDeleteClip}
         selectedClipId={selectedClipId}
         onSelectClip={handleSelectClip}
       />
