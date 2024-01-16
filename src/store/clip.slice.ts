@@ -29,11 +29,11 @@ export const clipSlice = createSlice({
     // 削除
     deleteClip(state, action: PayloadAction<number>) {
       clipAdapter.removeOne(state.clips, action.payload);
+      state.selectedClipId = null;
     },
     // 編集
     editClip(state, action: PayloadAction<Clip>) {
       clipAdapter.upsertOne(state.clips, action.payload);
-      state.selectedClipId = null;
     },
     // 選択中クリップ
     selectedClipId(state, action: PayloadAction<number>) {
