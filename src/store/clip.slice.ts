@@ -13,8 +13,8 @@ export const clipSlice = createSlice({
   reducers: {
     // 新規追加
     addClip(state) {
-      const clips = clipAdapter.getSelectors().selectAll(state.clips);
-      const clipId = clips.length + 1;
+      state.createdId += 1;
+      const clipId = state.createdId;
       const createdAt = nowDate();
 
       const newClip = {
