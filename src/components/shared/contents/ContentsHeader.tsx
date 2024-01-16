@@ -13,17 +13,41 @@ import { ContentsHeaderActions } from '@/components/ui/contents/ContentsHeaderAc
 import { ContentsHeaderTitle } from '@/components/ui/contents/ContentsHeaderTitle';
 
 type PropsType = {
+  isEditOption: boolean;
+  setIsEditOption: (boolean: boolean) => void;
   title: string;
 };
 
-export const ContentsHeader: FC<PropsType> = ({ title }) => {
+export const ContentsHeader: FC<PropsType> = ({
+  isEditOption,
+  setIsEditOption,
+  title,
+}) => {
   return (
     // Headerをui化したらエラーになる
     <Header className="top-0 right-0 border-b-2 fixed bg-white left-80 min-w-96 z-50 items-center">
-      <Flex align="center" justify="space-between">
-        <ContentsHeaderTitle title={title} />
-        <ContentsHeaderActions>
-          <Flex>
+      {title ? (
+        <Flex align="center" justify="space-between">
+          <ContentsHeaderTitle title={title} />
+          <ContentsHeaderActions>
+            <Flex
+              className="cursor-pointer"
+              onClick={() => setIsEditOption(!isEditOption)}
+            >
+              <BoldOutlined />
+              <ItalicOutlined />
+              <UnderlineOutlined />
+            </Flex>
+            <ExclamationCircleOutlined />
+            <MoreOutlined />
+          </ContentsHeaderActions>
+        </Flex>
+      ) : (
+        <ContentsHeaderActions justify="flex-end" minHeight="h-16">
+          <Flex
+            className="cursor-pointer"
+            onClick={() => setIsEditOption(!isEditOption)}
+          >
             <BoldOutlined />
             <ItalicOutlined />
             <UnderlineOutlined />
@@ -31,7 +55,7 @@ export const ContentsHeader: FC<PropsType> = ({ title }) => {
           <ExclamationCircleOutlined />
           <MoreOutlined />
         </ContentsHeaderActions>
-      </Flex>
+      )}
     </Header>
   );
 };

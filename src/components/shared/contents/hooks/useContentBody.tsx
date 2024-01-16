@@ -2,29 +2,22 @@ import { useEffect, useState } from 'react';
 import { nowDate } from 'src/utils/day';
 import { useDebouncedCallback } from 'use-debounce';
 
-import { ContentBodyPropsType } from '@/components/shared/contents';
+import { ContentsPropsType } from '@/components/shared/contents';
 
-type ContentBodyHooksType = ContentBodyPropsType;
+type ContentBodyHooksType = ContentsPropsType;
 
 export const useContentBody = ({
   handleSaveText,
   selectedClip: clip,
 }: ContentBodyHooksType) => {
-  const [titleText, setTitleText] = useState('');
-  const [text, setText] = useState('');
+  const [editedText, setEditedText] = useState('');
 
   useEffect(() => {
-    setTitleText(clip.title);
-    setText(clip.text);
+    setEditedText(clip.title + clip.text);
   }, [clip]);
 
-  // TODO:markdownでtitleTextとtextがもしかしたら一つになるかも
-  const onChangeTitleText = (text: string) => {
-    setTitleText(text);
-    debounceSaveText();
-  };
-  const onChangeText = (text: string) => {
-    setText(text);
+  const onChangeEditText = (text?: string) => {
+    setEditedText(text ?? '');
     debounceSaveText();
   };
 
@@ -33,22 +26,35 @@ export const useContentBody = ({
   }, 1000);
 
   const onSaveText = () => {
+    const firstRowIndex = editedText.indexOf('\n', 0);
+    let title = '';
+    let subText = '';
+
+    // 改行がない場合
+    if (firstRowIndex === -1) {
+      title = editedText;
+
+      // 改行がある場合、一行目のみをタイトルとする
+    } else {
+      title = editedText.slice(0, firstRowIndex);
+      title = `${title}\n`;
+      subText = editedText.slice(firstRowIndex + 1);
+    }
+
     const updateAt = nowDate();
 
     const editClip = {
       ...clip,
-      text: text,
-      title: titleText,
+      text: subText,
+      title: title,
       updateAt: updateAt,
     };
     handleSaveText(editClip);
   };
 
   return {
-    onChangeText,
-    onChangeTitleText,
+    editedText,
+    onChangeEditText,
     onSaveText,
-    text,
-    titleText,
   };
 };

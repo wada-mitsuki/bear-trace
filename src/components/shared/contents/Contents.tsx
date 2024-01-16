@@ -1,5 +1,5 @@
 import { Content } from 'antd/lib/layout/layout';
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { ContentBody, ContentsHeader } from 'src/components/shared/contents';
 import { Clip } from 'src/entity/clip';
 
@@ -12,11 +12,18 @@ export const Contents: FC<ContentsPropsType> = ({
   handleSaveText,
   selectedClip,
 }) => {
+  const [isEditOption, setIsEditOption] = useState(true);
+
   return (
     <Content className="overflow-auto">
-      <ContentsHeader title={selectedClip.title} />
+      <ContentsHeader
+        isEditOption={isEditOption}
+        setIsEditOption={setIsEditOption}
+        title={selectedClip.title}
+      />
       <ContentBody
         handleSaveText={handleSaveText}
+        isEditOption={isEditOption}
         selectedClip={selectedClip}
       />
     </Content>
