@@ -1,4 +1,4 @@
-import { Modal, ModalProps } from 'antd';
+import { Button, Modal, ModalProps } from 'antd';
 import React, { FC } from 'react';
 
 type PropsType = {
@@ -14,7 +14,23 @@ export const BaseModal: FC<PropsType> = ({
   isModalOpen,
 }) => {
   return (
-    <Modal open={isModalOpen} onCancel={handleCancel} onOk={handleOk}>
+    <Modal
+      footer={[
+        <Button key="cancel" onClick={handleCancel}>
+          キャンセル
+        </Button>,
+        <Button
+          className="bg-blue-500 text-white"
+          key="ok"
+          type="primary"
+          onClick={handleOk}
+        >
+          OK
+        </Button>,
+      ]}
+      open={isModalOpen}
+      onCancel={handleCancel}
+    >
       {children}
     </Modal>
   );
