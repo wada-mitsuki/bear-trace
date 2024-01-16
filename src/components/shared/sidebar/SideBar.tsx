@@ -6,6 +6,7 @@ import { Clip } from 'src/entity/clip';
 export type SideBarType = {
   clips: Clip[];
   handleAddClip: () => void;
+  handleDeleteClip: () => void;
   handleSelectClip: (clipId: number) => void;
   selectedClipId?: number;
 };
@@ -13,6 +14,7 @@ export type SideBarType = {
 export const SideBar: FC<SideBarType> = ({
   clips,
   handleAddClip,
+  handleDeleteClip,
   handleSelectClip,
   selectedClipId,
 }) => {
@@ -23,7 +25,12 @@ export const SideBar: FC<SideBarType> = ({
       theme="light"
       width="320"
     >
-      <SideBarHeader onClickAddClip={handleAddClip} />
+      <SideBarHeader
+        handleDeleteClip={handleDeleteClip}
+        selectedClipId={selectedClipId}
+        onClickAddClip={handleAddClip}
+      />
+
       <SideBarContents
         clips={clips}
         selectedClipId={selectedClipId}

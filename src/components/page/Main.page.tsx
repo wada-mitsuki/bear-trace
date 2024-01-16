@@ -8,6 +8,7 @@ const MainPage = () => {
   const {
     clips,
     handleAddClip,
+    handleDeleteClip,
     handleSaveText,
     handleSelectClip,
     selectedClip,
@@ -18,6 +19,7 @@ const MainPage = () => {
       <SideBar
         clips={clips}
         handleAddClip={handleAddClip}
+        handleDeleteClip={handleDeleteClip}
         handleSelectClip={handleSelectClip}
         selectedClipId={selectedClip?.id}
       />
