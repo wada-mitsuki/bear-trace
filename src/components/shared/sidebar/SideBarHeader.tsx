@@ -1,39 +1,34 @@
 import { FormOutlined, SearchOutlined } from '@ant-design/icons';
 import { Flex } from 'antd';
 import { Header } from 'antd/lib/layout/layout';
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 
-import { useSideBarHeader } from '@/components/shared/sidebar/hooks';
 import { SearchInput } from '@/components/ui/form/SearchInput';
 import { SideBarHeaderActions } from '@/components/ui/sidebar/SideBarHeaderActions';
 import { SideBarHeaderTitle } from '@/components/ui/sidebar/SideBarHeaderTitle';
 
 export type SideBarHeaderType = {
-  handleSearchClip: (text: string) => void;
+  handleSetSearchText: (text: string) => void;
   onClickAddClip: () => void;
+  searchText: string;
 };
 
 export const SideBarHeader: FC<SideBarHeaderType> = ({
-  handleSearchClip,
+  handleSetSearchText,
   onClickAddClip,
+  searchText,
 }) => {
-  const {
-    isSearch,
-    onChangeSearchText,
-    onCloseSearch,
-    searchText,
-    setIsSearch,
-  } = useSideBarHeader({
-    handleSearchClip,
-  });
+  const [isSearch, setIsSearch] = useState(false);
 
   return (
     <Header className="border-b-2 px-5 w-80 fixed bg-white border-r-2">
       {isSearch ? (
         <SearchInput
           value={searchText}
-          onChange={(e) => onChangeSearchText(e.target.value)}
-          onClose={onCloseSearch}
+          onChange={(e) => handleSetSearchText(e.target.value)}
+          onClose={() =>
+            searchText ? handleSetSearchText('') : setIsSearch(false)
+          }
         />
       ) : (
         <Flex align="center" justify="space-between">

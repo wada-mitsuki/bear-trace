@@ -10,8 +10,9 @@ const MainPage = () => {
     handleAddClip,
     handleDeleteClip,
     handleSaveText,
-    handleSearchClip,
     handleSelectClip,
+    handleSetSearchText,
+    searchText,
     searchedClip,
     selectedClip,
   } = useMainPage();
@@ -22,8 +23,9 @@ const MainPage = () => {
         clips={clips}
         handleAddClip={handleAddClip}
         handleDeleteClip={handleDeleteClip}
-        handleSearchClip={handleSearchClip}
         handleSelectClip={handleSelectClip}
+        handleSetSearchText={handleSetSearchText}
+        searchText={searchText}
         searchedClip={searchedClip}
         selectedClipId={selectedClip?.id}
       />

@@ -7,8 +7,9 @@ export type SideBarType = {
   clips: Clip[];
   handleAddClip: () => void;
   handleDeleteClip: () => void;
-  handleSearchClip: (text: string) => void;
   handleSelectClip: (clipId: number) => void;
+  handleSetSearchText: (text: string) => void;
+  searchText: string;
   searchedClip: Clip[];
   selectedClipId?: number;
 };
@@ -17,8 +18,9 @@ export const SideBar: FC<SideBarType> = ({
   clips,
   handleAddClip,
   handleDeleteClip,
-  handleSearchClip,
   handleSelectClip,
+  handleSetSearchText,
+  searchText,
   searchedClip,
   selectedClipId,
 }) => {
@@ -30,7 +32,8 @@ export const SideBar: FC<SideBarType> = ({
       width="320"
     >
       <SideBarHeader
-        handleSearchClip={handleSearchClip}
+        handleSetSearchText={handleSetSearchText}
+        searchText={searchText}
         onClickAddClip={handleAddClip}
       />
 

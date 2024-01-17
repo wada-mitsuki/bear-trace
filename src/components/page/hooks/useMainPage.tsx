@@ -3,6 +3,7 @@ import { Clip } from 'src/entity/clip';
 import {
   clipsSelector,
   searchedClipSelector,
+  searchTextSelector,
   selectedClipSelector,
 } from 'src/store/clip.selectors';
 import { clipActions } from 'src/store/clip.slice';
@@ -11,9 +12,10 @@ export const useMainPage = () => {
   // store関連
   const dispatch = useDispatch();
 
-  const selectedClip = useSelector(selectedClipSelector);
   const clips = useSelector(clipsSelector);
+  const selectedClip = useSelector(selectedClipSelector);
   const searchedClip = useSelector(searchedClipSelector);
+  const searchText = useSelector(searchTextSelector);
 
   // 新規クリップ追加
   const handleAddClip = () => {
@@ -34,9 +36,9 @@ export const useMainPage = () => {
     dispatch(clipActions.editClip(editClip));
   };
 
-  // 検索
-  const handleSearchClip = (text: string) => {
-    dispatch(clipActions.searchClip(text));
+  // 検索テキスト
+  const handleSetSearchText = (text: string) => {
+    dispatch(clipActions.searchText(text));
   };
 
   return {
@@ -44,8 +46,9 @@ export const useMainPage = () => {
     handleAddClip,
     handleDeleteClip,
     handleSaveText,
-    handleSearchClip,
     handleSelectClip,
+    handleSetSearchText,
+    searchText,
     searchedClip,
     selectedClip,
   };

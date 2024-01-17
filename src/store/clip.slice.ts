@@ -37,7 +37,7 @@ export const clipSlice = createSlice({
     },
 
     // 検索
-    searchClip(state, action: PayloadAction<string>) {
+    searchText(state, action: PayloadAction<string>) {
       state.searchText = action.payload;
     },
 
