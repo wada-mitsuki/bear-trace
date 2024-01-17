@@ -26,7 +26,6 @@ export const selectedClipSelector = createSelector(
 export const searchTextSelector = createSelector(
   clipFeatureSelector,
   ({ searchText }) => searchText,
-  // (state) => state.searchText,
 );
 
 /**
