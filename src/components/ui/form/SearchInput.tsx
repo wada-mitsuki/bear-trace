@@ -3,12 +3,12 @@ import { Input, InputProps } from 'antd';
 import React from 'react';
 
 type PropsType = {
-  onClick: (value: boolean) => void;
+  onClose: () => void;
 } & InputProps;
 
 export const SearchInput = ({
   onChange,
-  onClick,
+  onClose,
   value,
   ...props
 }: PropsType) => {
@@ -20,7 +20,7 @@ export const SearchInput = ({
       suffix={
         <CloseCircleFilled
           style={{ color: 'rgba(0,0,0,.45)' }}
-          onClick={onClick}
+          onClick={onClose}
         />
       }
       value={value}

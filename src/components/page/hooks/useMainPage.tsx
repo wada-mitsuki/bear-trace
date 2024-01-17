@@ -35,7 +35,7 @@ export const useMainPage = () => {
   };
 
   // 検索
-  const handleSearchText = (text: string) => {
+  const handleSearchClip = (text: string) => {
     dispatch(clipActions.searchClip(text));
   };
 
@@ -44,7 +44,7 @@ export const useMainPage = () => {
     handleAddClip,
     handleDeleteClip,
     handleSaveText,
-    handleSearchText,
+    handleSearchClip,
     handleSelectClip,
     searchedClip,
     selectedClip,

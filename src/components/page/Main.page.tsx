@@ -10,7 +10,7 @@ const MainPage = () => {
     handleAddClip,
     handleDeleteClip,
     handleSaveText,
-    handleSearchText,
+    handleSearchClip,
     handleSelectClip,
     searchedClip,
     selectedClip,
@@ -22,7 +22,7 @@ const MainPage = () => {
         clips={clips}
         handleAddClip={handleAddClip}
         handleDeleteClip={handleDeleteClip}
-        handleSearchText={handleSearchText}
+        handleSearchClip={handleSearchClip}
         handleSelectClip={handleSelectClip}
         searchedClip={searchedClip}
         selectedClipId={selectedClip?.id}
