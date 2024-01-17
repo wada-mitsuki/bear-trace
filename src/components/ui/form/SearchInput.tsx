@@ -6,7 +6,12 @@ type PropsType = {
   onClick: (value: boolean) => void;
 } & InputProps;
 
-export const SearchInput = ({ children, onClick, ...props }: PropsType) => {
+export const SearchInput = ({
+  onChange,
+  onClick,
+  value,
+  ...props
+}: PropsType) => {
   return (
     <Input
       className="border-red-200 border-4"
@@ -18,6 +23,8 @@ export const SearchInput = ({ children, onClick, ...props }: PropsType) => {
           onClick={onClick}
         />
       }
+      value={value}
+      onChange={onChange}
     />
   );
 };
