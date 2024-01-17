@@ -32,7 +32,8 @@ export const searchTextSelector = createSelector(
  * 記事検索
  */
 export const searchedClipSelector = createSelector(
-  [clipsSelector, searchTextSelector],
+  clipsSelector,
+  searchTextSelector,
   (clips, searchText) => {
     return clips.filter(
       (clip) =>

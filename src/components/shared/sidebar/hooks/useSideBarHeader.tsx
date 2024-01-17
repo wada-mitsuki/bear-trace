@@ -18,9 +18,9 @@ export const useSideBarHeader = ({
   const onCloseSearch = () => {
     if (searchText) {
       setSearchText('');
+      handleSearchClip('');
     } else {
       setIsSearch(false);
-      handleSearchClip('');
     }
   };
 

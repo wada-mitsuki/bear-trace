@@ -46,7 +46,6 @@ export const SideBarContents: FC<SideBarContentsPropsType> = ({
                 <ClipTitleText>
                   {clip.title ? removeMd(clip.title) : 'ステキな新しいメモ'}
                 </ClipTitleText>
-                {/* TODO:どうやってUI化するか悩み中 */}
                 <p className="line-clamp-2 w-full">
                   {clip.title
                     ? removeMd(clip.text)
