@@ -19,6 +19,10 @@ export const useMainPage = () => {
   const handleSelectClip = (clipId: number) => {
     dispatch(clipActions.selectedClipId(clipId));
   };
+  // クリップ削除
+  const handleDeleteClip = () => {
+    selectedClip && dispatch(clipActions.deleteClip(selectedClip.id));
+  };
 
   // テキスト保存
   const handleSaveText = (editClip: Clip) => {
@@ -28,6 +32,7 @@ export const useMainPage = () => {
   return {
     clips,
     handleAddClip,
+    handleDeleteClip,
     handleSaveText,
     handleSelectClip,
     selectedClip,

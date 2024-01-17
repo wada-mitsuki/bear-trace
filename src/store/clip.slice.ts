@@ -13,8 +13,8 @@ export const clipSlice = createSlice({
   reducers: {
     // 新規追加
     addClip(state) {
-      const clips = clipAdapter.getSelectors().selectAll(state.clips);
-      const clipId = clips.length + 1;
+      state.createdId += 1;
+      const clipId = state.createdId;
       const createdAt = nowDate();
 
       const newClip = {
@@ -24,6 +24,12 @@ export const clipSlice = createSlice({
         title: '',
       };
       clipAdapter.addOne(state.clips, newClip);
+    },
+
+    // 削除
+    deleteClip(state, action: PayloadAction<number>) {
+      clipAdapter.removeOne(state.clips, action.payload);
+      state.selectedClipId = null;
     },
     // 編集
     editClip(state, action: PayloadAction<Clip>) {
