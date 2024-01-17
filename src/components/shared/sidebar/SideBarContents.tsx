@@ -13,6 +13,7 @@ export type SideBarContentsPropsType = {
   clips: Clip[];
   handleDeleteClip: () => void;
   onSelectClip: (clipId: number) => void;
+  searchedClip: Clip[];
   selectedClipId?: number;
 };
 
@@ -20,6 +21,7 @@ export const SideBarContents: FC<SideBarContentsPropsType> = ({
   clips,
   handleDeleteClip,
   onSelectClip,
+  searchedClip,
   selectedClipId,
 }) => {
   // 今後もこれ以上のロジックはなそうなので一旦ここで宣言するが、hooks化するか悩み中
@@ -29,10 +31,11 @@ export const SideBarContents: FC<SideBarContentsPropsType> = ({
     setIsModalOpen(false);
   };
 
+  const cliplist = searchedClip ?? clips;
   return (
     <>
       <div className="mt-20">
-        {clips.map((clip) => {
+        {cliplist.map((clip) => {
           return (
             <>
               <ClipLayout
@@ -43,8 +46,6 @@ export const SideBarContents: FC<SideBarContentsPropsType> = ({
                 <ClipTitleText>
                   {clip.title ? removeMd(clip.title) : 'ステキな新しいメモ'}
                 </ClipTitleText>
-
-                {/* TODO:どうやってUI化するか悩み中 */}
                 <p className="line-clamp-2 w-full">
                   {clip.title
                     ? removeMd(clip.text)

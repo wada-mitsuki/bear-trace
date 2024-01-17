@@ -11,6 +11,9 @@ const MainPage = () => {
     handleDeleteClip,
     handleSaveText,
     handleSelectClip,
+    handleSetSearchText,
+    searchText,
+    searchedClip,
     selectedClip,
   } = useMainPage();
 
@@ -21,6 +24,9 @@ const MainPage = () => {
         handleAddClip={handleAddClip}
         handleDeleteClip={handleDeleteClip}
         handleSelectClip={handleSelectClip}
+        handleSetSearchText={handleSetSearchText}
+        searchText={searchText}
+        searchedClip={searchedClip}
         selectedClipId={selectedClip?.id}
       />
       {selectedClip && (

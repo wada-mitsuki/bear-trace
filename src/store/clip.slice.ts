@@ -35,6 +35,12 @@ export const clipSlice = createSlice({
     editClip(state, action: PayloadAction<Clip>) {
       clipAdapter.upsertOne(state.clips, action.payload);
     },
+
+    // 検索
+    searchText(state, action: PayloadAction<string>) {
+      state.searchText = action.payload;
+    },
+
     // 選択中クリップ
     selectedClipId(state, action: PayloadAction<number>) {
       state.selectedClipId = action.payload;

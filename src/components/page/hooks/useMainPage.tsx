@@ -1,14 +1,21 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Clip } from 'src/entity/clip';
-import { clipsSelector, selectedClipSelector } from 'src/store/clip.selectors';
+import {
+  clipsSelector,
+  searchedClipSelector,
+  searchTextSelector,
+  selectedClipSelector,
+} from 'src/store/clip.selectors';
 import { clipActions } from 'src/store/clip.slice';
 
 export const useMainPage = () => {
   // store関連
   const dispatch = useDispatch();
 
-  const selectedClip = useSelector(selectedClipSelector);
   const clips = useSelector(clipsSelector);
+  const selectedClip = useSelector(selectedClipSelector);
+  const searchedClip = useSelector(searchedClipSelector);
+  const searchText = useSelector(searchTextSelector);
 
   // 新規クリップ追加
   const handleAddClip = () => {
@@ -29,12 +36,20 @@ export const useMainPage = () => {
     dispatch(clipActions.editClip(editClip));
   };
 
+  // 検索テキスト
+  const handleSetSearchText = (text: string) => {
+    dispatch(clipActions.searchText(text));
+  };
+
   return {
     clips,
     handleAddClip,
     handleDeleteClip,
     handleSaveText,
     handleSelectClip,
+    handleSetSearchText,
+    searchText,
+    searchedClip,
     selectedClip,
   };
 };

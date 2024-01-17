@@ -20,3 +20,24 @@ export const selectedClipSelector = createSelector(
   (state) =>
     state.selectedClipId ? selectById(state.clips, state.selectedClipId) : null,
 );
+/**
+ * 検索ワード
+ */
+export const searchTextSelector = createSelector(
+  clipFeatureSelector,
+  ({ searchText }) => searchText,
+);
+
+/**
+ * 記事検索
+ */
+export const searchedClipSelector = createSelector(
+  clipsSelector,
+  searchTextSelector,
+  (clips, searchText) => {
+    return clips.filter(
+      (clip) =>
+        clip.title.includes(searchText) || clip.text.includes(searchText),
+    );
+  },
+);
