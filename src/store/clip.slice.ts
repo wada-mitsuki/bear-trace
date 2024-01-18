@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Clip } from 'src/entity/clip';
+import { fetchAllClips } from 'src/store/clip.async-thunks';
 import {
   CLIP_FEATURE_KEY,
   clipAdapter,
@@ -35,16 +36,20 @@ export const clipSlice = createSlice({
     editClip(state, action: PayloadAction<Clip>) {
       clipAdapter.upsertOne(state.clips, action.payload);
     },
-
     // 検索
     searchText(state, action: PayloadAction<string>) {
       state.searchText = action.payload;
     },
-
     // 選択中クリップ
     selectedClipId(state, action: PayloadAction<number>) {
       state.selectedClipId = action.payload;
     },
+  },
+  // eslint-disable-next-line sort-keys-fix/sort-keys-fix
+  extraReducers: (builder) => {
+    builder.addCase(fetchAllClips.fulfilled, (state, action) => {
+      clipAdapter.setAll(state.clips, action.payload);
+    });
   },
 });
 

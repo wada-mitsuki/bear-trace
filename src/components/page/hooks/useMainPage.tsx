@@ -1,5 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Clip } from 'src/entity/clip';
+import { AppDispatch } from 'src/store';
+import { fetchAllClips } from 'src/store/clip.async-thunks';
 import {
   clipsSelector,
   searchedClipSelector,
@@ -10,7 +12,7 @@ import { clipActions } from 'src/store/clip.slice';
 
 export const useMainPage = () => {
   // store関連
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   const clips = useSelector(clipsSelector);
   const selectedClip = useSelector(selectedClipSelector);
@@ -20,6 +22,7 @@ export const useMainPage = () => {
   // 新規クリップ追加
   const handleAddClip = () => {
     dispatch(clipActions.addClip());
+    dispatch(fetchAllClips());
   };
 
   // クリップ選択
