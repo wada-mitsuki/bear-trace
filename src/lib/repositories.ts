@@ -1,4 +1,4 @@
-import { ClipsRepository, IClipsRepository } from 'src/lib';
+import { ClipsRepository, IClipsRepository } from 'src/lib/clips.repository';
 
 interface IRepositories {
   clips: IClipsRepository;
@@ -16,13 +16,12 @@ class Repositories implements IRepositories {
   static getInstance() {
     if (!Repositories.instance) {
       const clips = new ClipsRepository();
-      // Repositories.instance = new Repositories({
-      //   clips,
-      // });
+      Repositories.instance = new Repositories({
+        clips,
+      });
     }
     return Repositories.instance;
   }
 }
 
 export const repositories = Repositories.getInstance();
-// export const clipsRepository = repositories.clips;

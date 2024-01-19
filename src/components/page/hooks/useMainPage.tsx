@@ -1,7 +1,8 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Clip } from 'src/entity/clip';
 import { AppDispatch } from 'src/store';
-import { fetchAllClips } from 'src/store/clip.async-thunks';
+import { fetchAllClips, setStorageClips } from 'src/store/clip.async-thunks';
 import {
   clipsSelector,
   searchedClipSelector,
@@ -19,10 +20,18 @@ export const useMainPage = () => {
   const searchedClip = useSelector(searchedClipSelector);
   const searchText = useSelector(searchTextSelector);
 
+  useEffect(() => {
+    // 初回マウント時、ローカルストレージに保存してるクリップをセットする
+    dispatch(fetchAllClips());
+  }, []);
+
+  useEffect(() => {
+    dispatch(setStorageClips(clips));
+  }, [clips]);
+
   // 新規クリップ追加
   const handleAddClip = () => {
     dispatch(clipActions.addClip());
-    dispatch(fetchAllClips());
   };
 
   // クリップ選択

@@ -1,18 +1,17 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { repositories } from 'src/lib';
+import { Clip } from 'src/entity/clip';
+import { repositories } from 'src/lib/repositories';
 import { CLIP_FEATURE_KEY } from 'src/store/clip.state';
 
-// export const fetchAllClips = createAsyncThunk(
-//   `${CLIP_FEATURE_KEY}/fetchClips`,
-//   async () => {
-//     return repositories.users.getLoggedInUser();
-//   },
-// );
-
-export const fetchAllClips = createAsyncThunk(
+export const setStorageClips = createAsyncThunk(
   `${CLIP_FEATURE_KEY}/addClips`,
+  async (clips: Clip[]) => {
+    return repositories.clips.setClip(clips);
+  },
+);
+export const fetchAllClips = createAsyncThunk(
+  `${CLIP_FEATURE_KEY}/getClips`,
   async () => {
-    return repositories.clips.setClip();
-    // return clipsRepository.setClip();
+    return repositories.clips.getAllClips();
   },
 );

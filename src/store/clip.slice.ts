@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Clip } from 'src/entity/clip';
-import { fetchAllClips } from 'src/store/clip.async-thunks';
+import { fetchAllClips, setStorageClips } from 'src/store/clip.async-thunks';
 import {
   CLIP_FEATURE_KEY,
   clipAdapter,
@@ -47,6 +47,7 @@ export const clipSlice = createSlice({
   },
   // eslint-disable-next-line sort-keys-fix/sort-keys-fix
   extraReducers: (builder) => {
+    builder.addCase(setStorageClips.fulfilled, () => {});
     builder.addCase(fetchAllClips.fulfilled, (state, action) => {
       clipAdapter.setAll(state.clips, action.payload);
     });
