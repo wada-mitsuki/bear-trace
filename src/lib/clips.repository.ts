@@ -10,17 +10,11 @@ export interface IClipsRepository {
 
 export class ClipsRepository implements IClipsRepository {
   async getAllClips() {
-    // STRAT==ここの処理共通化していいものなんですかね
-    const clipsJson = localStorage.getItem(`clips`);
-    const clips = clipsJson ? JSON.parse(clipsJson) : [];
-    // ===END
-
-    return clips;
+    return this.getStorageClips();
   }
 
   async addClip() {
-    const clipsJson = localStorage.getItem(`clips`);
-    const clips = clipsJson ? JSON.parse(clipsJson) : [];
+    const clips = this.getStorageClips();
 
     const createdAt = nowDate();
     const clipId = clips.length > 0 ? clips[clips.length - 1].id : 0;
@@ -32,30 +26,41 @@ export class ClipsRepository implements IClipsRepository {
       title: '',
     };
     const newClips = [...clips, newClip];
-    localStorage.setItem(`clips`, JSON.stringify(newClips));
+    this.setStorageClips(newClips);
     return newClips;
   }
 
   async editClip(editedClip: Clip) {
-    const clipsJson = localStorage.getItem(`clips`);
-    const clips = clipsJson ? JSON.parse(clipsJson) : [];
+    const clips = this.getStorageClips();
 
     const newClips = clips.map((clip: Clip) =>
       clip.id === editedClip.id ? editedClip : clip,
     );
-    localStorage.setItem(`clips`, JSON.stringify(newClips));
+    this.setStorageClips(newClips);
     return newClips;
   }
 
   async deleteClip(clipId: number) {
-    const clipsJson = localStorage.getItem(`clips`);
-    const clips = clipsJson ? JSON.parse(clipsJson) : [];
+    const clips = this.getStorageClips();
 
     const deletedClips = clips.filter(
       (clip: { id: number }) => clip.id !== clipId,
     );
 
-    localStorage.setItem(`clips`, JSON.stringify(deletedClips));
+    this.setStorageClips(deletedClips);
     return deletedClips;
+  }
+
+  // storageからClip情報を取得
+  private getStorageClips() {
+    const clipsJson = localStorage.getItem(`clips`);
+    const clips = clipsJson ? JSON.parse(clipsJson) : [];
+    return clips;
+  }
+
+  // storageにClip情報を格納
+  private setStorageClips(clips: Clip[]) {
+    localStorage.setItem(`clips`, JSON.stringify(clips));
+    return;
   }
 }
