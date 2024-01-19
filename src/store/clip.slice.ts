@@ -30,8 +30,6 @@ export const clipSlice = createSlice({
     builder.addCase(fetchAllClips.fulfilled, (state, action) => {
       const clips = action.payload;
       clipAdapter.setAll(state.clips, clips);
-      const id = clips.length > 0 ? clips[clips.length - 1].id : 0;
-      state.createdId = id;
     });
     // 新規追加
     builder.addCase(addNewClip.fulfilled, (state, action) => {
