@@ -35,42 +35,43 @@ export const SideBarContents: FC<SideBarContentsPropsType> = ({
   return (
     <>
       <div className="mt-20">
-        {cliplist.map((clip) => {
-          return (
-            <>
-              <ClipLayout
-                isSelect={selectedClipId == clip.id}
-                key={clip.id}
-                onClick={() => onSelectClip(clip.id)}
-              >
-                <ClipTitleText>
-                  {clip.title ? removeMd(clip.title) : 'ステキな新しいメモ'}
-                </ClipTitleText>
-                <p className="line-clamp-2 w-full">
-                  {clip.title
-                    ? removeMd(clip.text)
-                    : '落ち着いて、何か書いてみましょう'}
-                </p>
-
-                <Flex
-                  align="center"
-                  className="w-full mt-5 mb-3"
-                  justify="space-between"
+        {cliplist &&
+          cliplist.map((clip) => {
+            return (
+              <>
+                <ClipLayout
+                  isSelect={selectedClipId == clip.id}
+                  key={clip.id}
+                  onClick={() => onSelectClip(clip.id)}
                 >
-                  <p className="text-xs">
-                    {clip.updateAt
-                      ? displayDateFormat(clip.updateAt)
-                      : displayDateFormat(clip.createdAt)}
+                  <ClipTitleText>
+                    {clip.title ? removeMd(clip.title) : 'ステキな新しいメモ'}
+                  </ClipTitleText>
+                  <p className="line-clamp-2 w-full">
+                    {clip.title
+                      ? removeMd(clip.text)
+                      : '落ち着いて、何か書いてみましょう'}
                   </p>
-                  <DeleteOutlined
-                    className="text-base"
-                    onClick={() => setIsModalOpen(true)}
-                  />
-                </Flex>
-              </ClipLayout>
-            </>
-          );
-        })}
+
+                  <Flex
+                    align="center"
+                    className="w-full mt-5 mb-3"
+                    justify="space-between"
+                  >
+                    <p className="text-xs">
+                      {clip.updateAt
+                        ? displayDateFormat(clip.updateAt)
+                        : displayDateFormat(clip.createdAt)}
+                    </p>
+                    <DeleteOutlined
+                      className="text-base"
+                      onClick={() => setIsModalOpen(true)}
+                    />
+                  </Flex>
+                </ClipLayout>
+              </>
+            );
+          })}
       </div>
       <BaseModal
         handleCancel={() => setIsModalOpen(false)}

@@ -2,7 +2,12 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Clip } from 'src/entity/clip';
 import { AppDispatch } from 'src/store';
-import { fetchAllClips, setStorageClips } from 'src/store/clip.async-thunks';
+import {
+  addNewClip,
+  deleteClip,
+  editedClip,
+  fetchAllClips,
+} from 'src/store/clip.async-thunks';
 import {
   clipsSelector,
   searchedClipSelector,
@@ -25,13 +30,9 @@ export const useMainPage = () => {
     dispatch(fetchAllClips());
   }, []);
 
-  useEffect(() => {
-    dispatch(setStorageClips(clips));
-  }, [clips]);
-
   // 新規クリップ追加
   const handleAddClip = () => {
-    dispatch(clipActions.addClip());
+    dispatch(addNewClip());
   };
 
   // クリップ選択
@@ -40,12 +41,12 @@ export const useMainPage = () => {
   };
   // クリップ削除
   const handleDeleteClip = () => {
-    selectedClip && dispatch(clipActions.deleteClip(selectedClip.id));
+    selectedClip && dispatch(deleteClip(selectedClip.id));
   };
 
   // テキスト保存
   const handleSaveText = (editClip: Clip) => {
-    dispatch(clipActions.editClip(editClip));
+    dispatch(editedClip(editClip));
   };
 
   // 検索テキスト
