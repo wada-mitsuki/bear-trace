@@ -21,7 +21,7 @@ export const useMainPage = () => {
   const searchText = useSelector(searchTextSelector);
 
   useEffect(() => {
-    // 初回マウント時、ローカルストレージに保存してるクリップをセットする
+    // 初回マウント時、ローカルストレージに保存してるクリップを取得しstoreへセット
     dispatch(fetchAllClips());
   }, []);
 
