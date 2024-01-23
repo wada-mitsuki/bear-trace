@@ -8,6 +8,7 @@ import {
 import { Flex } from 'antd';
 import { Header } from 'antd/lib/layout/layout';
 import React, { FC } from 'react';
+import removeMd from 'remove-markdown';
 
 import { ContentsHeaderActions } from '@/components/ui/contents/ContentsHeaderActions';
 import { ContentsHeaderTitle } from '@/components/ui/contents/ContentsHeaderTitle';
@@ -28,7 +29,7 @@ export const ContentsHeader: FC<PropsType> = ({
     <Header className="top-0 right-0 border-b-2 fixed bg-white left-80 min-w-96 z-50 items-center">
       {title ? (
         <Flex align="center" justify="space-between">
-          <ContentsHeaderTitle title={title} />
+          <ContentsHeaderTitle title={removeMd(title)} />
           <ContentsHeaderActions>
             <Flex
               className="cursor-pointer"
